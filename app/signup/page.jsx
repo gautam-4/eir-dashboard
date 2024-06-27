@@ -28,8 +28,8 @@ export default function Example() {
                                             name="firstName"
                                             type="text"
                                             required
-                                            className="block w-full appearance-none rounded-md border input-field px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm"
-                                        />
+                                            className="block w-full appearance-none rounded-md border input-field px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm bg-transparent border-gray-600"
+                                            />
                                     </div>
                                 </div>
                                 <div>
@@ -42,8 +42,8 @@ export default function Example() {
                                             name="lastNmae"
                                             type="text"
                                             required
-                                            className="block w-full appearance-none rounded-md border input-field px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm"
-                                        />
+                                            className="block w-full appearance-none rounded-md border input-field px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm bg-transparent border-gray-600"
+                                            />
                                     </div>
                                 </div>
                             </div>
@@ -59,8 +59,8 @@ export default function Example() {
                                         type="email"
                                         autoComplete="email"
                                         required
-                                        className="block w-full appearance-none rounded-md border input-field px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm"
-                                    />
+                                        className="block w-full appearance-none rounded-md border input-field px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm bg-transparent border-gray-600"
+                                        />
                                 </div>
                             </div>
 
@@ -75,8 +75,8 @@ export default function Example() {
                                         type="password"
                                         autoComplete="current-password"
                                         required
-                                        className="block w-full appearance-none rounded-md border input-field px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm"
-                                    />
+                                        className="block w-full appearance-none rounded-md border px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm bg-transparent border-gray-600"
+                                        />
                                 </div>
                             </div>
                         </form>

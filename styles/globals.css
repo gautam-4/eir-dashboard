@@ -45,9 +45,6 @@ body::before{
   }
 
   .input-field {
-    border: none;
-    background-color: rgb(var(--input-background-color));
-    color: rgb(var(--foreground-rgb));
     &::placeholder {
       color: rgb(var(--input-placeholder-color));
     }
