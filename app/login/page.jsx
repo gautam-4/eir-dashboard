@@ -1,13 +1,10 @@
-export default function Example() {
+import Link from "next/link";
+
+export default function Login() {
     return (
       <>
         <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
-            <img
-              className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt="Your Company"
-            />
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
               Sign in to your account
             </h2>
@@ -65,14 +62,14 @@ export default function Example() {
                     <div className="w-full border-t border-gray-300 dark:border-gray-700" />
                   </div>
                   
-                </div>
-  
-                
+                </div>                
               </div>
 
-                  
-  
-                  <div className="text-sm flex justify-center pt-2">
+                  <div className="text-sm flex justify-between pt-2">
+                  <Link href="/signup" className="font-medium text-gray-500 hover:text-indigo-300">
+                      Create Account
+                  </Link>
+
                     <a href="#" className="font-medium text-gray-500 hover:text-indigo-300">
                       Forgot your password?
                     </a>

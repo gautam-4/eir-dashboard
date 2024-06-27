@@ -1,13 +1,10 @@
-export default function Example() {
+import Link from "next/link";
+
+export default function Signup() {
     return (
         <>
             <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                    <img
-                        className="mx-auto h-12 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="Your Company"
-                    />
                     <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                         Create an account
                     </h2>
@@ -29,7 +26,7 @@ export default function Example() {
                                             type="text"
                                             required
                                             className="block w-full appearance-none rounded-md border input-field px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm bg-transparent border-gray-600"
-                                            />
+                                        />
                                     </div>
                                 </div>
                                 <div>
@@ -43,7 +40,7 @@ export default function Example() {
                                             type="text"
                                             required
                                             className="block w-full appearance-none rounded-md border input-field px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm bg-transparent border-gray-600"
-                                            />
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +57,7 @@ export default function Example() {
                                         autoComplete="email"
                                         required
                                         className="block w-full appearance-none rounded-md border input-field px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm bg-transparent border-gray-600"
-                                        />
+                                    />
                                 </div>
                             </div>
 
@@ -76,20 +73,33 @@ export default function Example() {
                                         autoComplete="current-password"
                                         required
                                         className="block w-full appearance-none rounded-md border px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm bg-transparent border-gray-600"
-                                        />
+                                    />
                                 </div>
+                            </div>
+                            <div className="mt-10">
+                                <button
+                                    type="submit"
+                                    className="button-primary flex w-full justify-center rounded-md py-2 px-4 text-sm font-medium shadow-sm"
+                                >
+                                    Sign up
+                                </button>
                             </div>
                         </form>
 
-                       
-                        
-                        <div className="mt-10">
-                            <button
-                                type="submit"
-                                className="button-primary flex w-full justify-center rounded-md py-2 px-4 text-sm font-medium shadow-sm"
-                            >
-                                Sign up
-                            </button>
+                        <div className="mt-6">
+                            <div className="relative">
+                                <div className="absolute inset-0 flex items-center">
+                                    <div className="w-full border-t border-gray-300 dark:border-gray-700" />
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div className="text-sm flex justify-center pt-2">
+                            <Link href="/login" className="font-medium text-gray-500 hover:text-indigo-300">
+                                Already a user? Login here
+                            </Link>
                         </div>
 
                     </div>
