@@ -26,25 +26,15 @@ function classNames(...classes) {
 
 export default function StartupList() {
   return (
-    <div className="px-4 sm:px-6 lg:px-8 bg-black text-gray-100">
+    <div className="px-4 sm:px-6 lg:px-8 text-gray-100">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-100">Plans</h1>
-          <p className="mt-2 text-sm text-gray-400">
-            Your team is on the <strong className="font-semibold text-gray-100">Startup</strong> plan. The next payment
-            of $80 will be due on August 4, 2022.
-          </p>
+          <h1 className="text-xl font-semibold text-gray-100">Startup List</h1>
+          
         </div>
-        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-          >
-            Update credit card
-          </button>
-        </div>
+        
       </div>
-      <div className="-mx-4 mt-10 ring-1 ring-gray-700 sm:-mx-6 md:mx-0 md:rounded-lg">
+      <div className="-mx-4 mt-10 ring-1 ring-gray-700 sm:-mx-6 md:mx-0 md:rounded-lg secondary_color">
         <table className="min-w-full divide-y divide-gray-700">
           <thead>
             <tr>
