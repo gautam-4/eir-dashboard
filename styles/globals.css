@@ -3,31 +3,69 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --secondary-color: #1D232C;
+  --primary-color: #161B21;
+  --input-background-color: 59, 71, 88;
+  --input-placeholder-color: 169, 169, 169;
+  --input-focus-border-color: 0, 119, 228;
+  --button-background-color: 0, 119, 228;
+  --button-hover-background-color: 6, 104, 196;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: #fff;
+  background-color: var(--primary-color);
+  
+}
+body::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/grid.svg');
+  background-size: 1%;
+  opacity: 0.3; /* Adjust the opacity as needed */
+  pointer-events: none;
+  z-index: -1;
+}
+
+.secondary_color {
+  background-color: var(--secondary-color);
+}
+
+.primary_color {
+  background-color: var(--primary-color);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .input-field {
+    border: none;
+    background-color: rgb(var(--input-background-color));
+    color: rgb(var(--foreground-rgb));
+    &::placeholder {
+      color: rgb(var(--input-placeholder-color));
+    }
+    &:focus {
+      border-color: rgb(var(--input-focus-border-color));
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(var(--input-focus-border-color), 0.4);
+    }
+  }
+
+  .button-primary {
+    background-color: rgb(var(--button-background-color));
+    &:hover {
+      background-color: rgb(var(--button-hover-background-color));
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(var(--button-background-color), 0.4);
+    }
   }
 }
