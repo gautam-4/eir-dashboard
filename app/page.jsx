@@ -1,7 +1,7 @@
 function Page() {
   return (
     <>
-        Hello Death!!!
+        Hello ALL!!!
     </>
   )
 }
