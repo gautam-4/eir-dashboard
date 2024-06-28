@@ -5,7 +5,7 @@ export default function Login() {
       <>
         <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
               Sign in to your account
             </h2>
             
@@ -15,7 +15,7 @@ export default function Login() {
             <div className="secondary_color py-8 px-4 shadow sm:rounded-lg sm:px-10 ">
               <form className="space-y-6" action="#" method="POST">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300">
                     Email address
                   </label>
                   <div className="mt-1">
@@ -31,7 +31,7 @@ export default function Login() {
                 </div>
   
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-300">
                     Password
                   </label>
                   <div className="mt-1">
@@ -59,7 +59,7 @@ export default function Login() {
               <div className="mt-6">
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300 dark:border-gray-700" />
+                    <div className="w-full border-t border-gray-700" />
                   </div>
                   
                 </div>                
