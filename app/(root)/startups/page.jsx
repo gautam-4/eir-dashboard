@@ -1,5 +1,4 @@
-"use client"
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 const startups = [
   {
@@ -28,11 +27,11 @@ function classNames(...classes) {
 }
 
 export default function StartupList() {
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleSelect = (id) => {
-    router.push(`/startups/${id}/about`);
-  };
+  // const handleSelect = (id) => {
+  //   router.push(`/startups/${id}/about`);
+  // };
 
   return (
     <div className="px-4 sm:px-6 lg:px-8 text-gray-100">
@@ -135,14 +134,18 @@ export default function StartupList() {
                     'relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium'
                   )}
                 >
-                  <button
-                    type="button"
-                    className="inline-flex items-center rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-sm font-medium leading-4 text-gray-300 shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
-                    onClick={() => handleSelect(startup.id)}
-                    disabled={startup.isCurrent}
-                  >
-                    Select<span className="sr-only">, {startup.name}</span>
-                  </button>
+                  {
+                    
+                    <Link href={`/startups/${startup.id}/about`}>
+                      <button
+                        type="button"
+                        className="inline-flex items-center rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-sm font-medium leading-4 text-gray-300 shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
+                        disabled={startup.isCurrent}
+                      >
+                        Select<span className="sr-only">, {startup.name}</span>
+                      </button>
+                    </Link>
+                  }
                   {startupIdx !== 0 ? <div className="absolute right-6 left-0 -top-px h-px bg-gray-800" /> : null}
                 </td>
               </tr>
