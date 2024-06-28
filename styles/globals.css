@@ -14,9 +14,9 @@
 
 body {
   color: #fff;
-  background-color: var(--primary-color);
-  
+  background-color: black;
 }
+
 body::before{
   content: '';
   position: absolute;
@@ -25,18 +25,10 @@ body::before{
   width: 100%;
   height: 100%;
   background-image: url('/assets/grid.svg');
-  background-size: 2%;
-  opacity: 0.3; 
+  background-size: 10%;
+  opacity: 0.9; 
   pointer-events: none;
   z-index: -1;
-}
-
-.secondary_color {
-  background-color: var(--secondary-color);
-}
-
-.primary_color {
-  background-color: var(--primary-color);
 }
 
 @layer utilities {

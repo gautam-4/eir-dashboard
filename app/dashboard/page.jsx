@@ -34,9 +34,9 @@ export default function StartupList() {
         </div>
         
       </div>
-      <div className="-mx-4 mt-10 ring-1 ring-gray-700 sm:-mx-6 md:mx-0 md:rounded-lg secondary_color">
+      <div className="-mx-4 mt-10 ring-1 ring-gray-700 sm:-mx-6 md:mx-0 md:rounded-lg bg-black">
         <table className="min-w-full divide-y divide-gray-700">
-          <thead>
+          <thead className="">
             <tr>
               <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-100 sm:pl-6">
                 Plan

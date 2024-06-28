@@ -25,7 +25,7 @@ export default function TemporaryDrawer() {
       sx={{ width: 250 }}
       role="presentation"
       onClick={toggleDrawer(false)}
-      className="secondary_color h-full text-white"
+      className="bg-black h-full text-white border-r border-gray-700"
     >
       <List>
         {['Startups', 'Drafts'].map((text, index) => (
