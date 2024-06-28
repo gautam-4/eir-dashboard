@@ -37,8 +37,8 @@ export default function StartupList() {
   return (
     <div className="px-4 sm:px-6 lg:px-8 text-gray-100">
       <div className="sm:flex sm:items-center">
-        <div className="sm:flex-auto">
-          <h1 className="text-xl text-center font-semibold text-gray-100">Startup List</h1>
+        <div className="max-w-7xl px-4 sm:px-6 md:px-8">
+          <h1 className="text-2xl font-semibold text-gray-100">Startups</h1>
         </div>
       </div>
       <div className="-mx-4 mt-10 ring-1 ring-gray-700 sm:-mx-6 md:mx-0 md:rounded-lg bg-black">
