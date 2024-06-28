@@ -1,8 +1,9 @@
-
-export default function Home() {
+function Page() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Home
-    </main>
-  );
+    <>
+        Hello Death!!!
+    </>
+  )
 }
+
+export default Page

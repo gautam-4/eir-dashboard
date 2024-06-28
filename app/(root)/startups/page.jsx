@@ -31,7 +31,7 @@ export default function StartupList() {
   const router = useRouter();
 
   const handleSelect = (id) => {
-    router.push(`/profile/${id}`);
+    router.push(`/startups/${id}/about`);
   };
 
   return (
