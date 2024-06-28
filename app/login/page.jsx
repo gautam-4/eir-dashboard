@@ -12,7 +12,7 @@ export default function Login() {
           </div>
   
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-            <div className="secondary_color py-8 px-4 shadow sm:rounded-lg sm:px-10 ">
+            <div className="bg-black py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-gray-700">
               <form className="space-y-6" action="#" method="POST">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-300">
