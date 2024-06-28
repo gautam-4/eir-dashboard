@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import Sidebar from "@/components/sidebar"
 
 export const metadata = {
   title: "Dashboard",
@@ -7,7 +8,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="">{children}</body>
+      <body className="">
+        <Sidebar/>
+        {children}
+        </body>
+      
     </html>
   );
 }
