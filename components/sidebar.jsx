@@ -18,12 +18,12 @@ import {
 } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Startups', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
+  { name: 'Startups', href: '/startups', icon: HomeIcon, current: true },
+  { name: 'Team', href: '/team', icon: UsersIcon, current: false },
+  { name: 'Projects', href: '/projects', icon: FolderIcon, current: false },
+  { name: 'Calendar', href: '/calendar', icon: CalendarIcon, current: false },
+  { name: 'Documents', href: '/documents', icon: InboxIcon, current: false },
+  { name: 'Reports', href: '/reports', icon: ChartBarIcon, current: false },
 ]
 
 function classNames(...classes) {
@@ -35,7 +35,6 @@ export default function Sidebar({ children }) {
 
   return (
     <>
-
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog as="div" className="relative z-40 md:hidden" onClose={setSidebarOpen}>
@@ -92,7 +91,7 @@ export default function Sidebar({ children }) {
                     </div>
                     <nav className="mt-5 space-y-1 px-2">
                       {navigation.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
                           href={item.href}
                           className={classNames(
@@ -110,12 +109,12 @@ export default function Sidebar({ children }) {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </nav>
                   </div>
                   <div className="flex flex-shrink-0 bg-gray-800 p-4">
-                    <a href="#" className="group block flex-shrink-0">
+                    <Link href="/profile" className="group block flex-shrink-0">
                       <div className="flex items-center">
                         <div>
                           <img
@@ -129,7 +128,7 @@ export default function Sidebar({ children }) {
                           <p className="text-sm font-medium text-gray-400 group-hover:text-gray-300">View profile</p>
                         </div>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -152,7 +151,7 @@ export default function Sidebar({ children }) {
               </div>
               <nav className="mt-5 flex-1 space-y-1 px-2">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     className={classNames(
@@ -168,12 +167,12 @@ export default function Sidebar({ children }) {
                       aria-hidden="true"
                     />
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
             <div className="flex flex-shrink-0 bg-gray-900 p-4 m-2 rounded-lg">
-              <a href="#" className="group block w-full flex-shrink-0">
+              <Link href="/profile" className="group block w-full flex-shrink-0">
                 <div className="flex items-center">
                   <div>
                     <img
@@ -187,7 +186,7 @@ export default function Sidebar({ children }) {
                     <p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">View profile</p>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
