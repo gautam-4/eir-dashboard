@@ -20,8 +20,8 @@ import {
 
 const navigation = [
   { name: 'Startups', href: '/startups', icon: HomeIcon },
-  { name: 'Thesis', href: '/thesis', icon: UsersIcon },
-  { name: 'Projects', href: '/projects', icon: FolderIcon },
+  { name: 'Contacts', href: '/contacts', icon: UsersIcon },
+  { name: 'Thesis', href: '/thesis', icon: FolderIcon },
   { name: 'Calendar', href: '/calendar', icon: CalendarIcon },
   { name: 'Documents', href: '/documents', icon: InboxIcon },
   { name: 'Reports', href: '/reports', icon: ChartBarIcon },

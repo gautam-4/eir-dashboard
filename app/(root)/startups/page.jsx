@@ -7,7 +7,7 @@ const startups = [
     domain: 'Technology',
     eirAssigned: 'Shivani',
     stage: 'L1',
-    prioritylevel: 'S1',
+    prioritylevel: 'P1',
     isCurrent: false,
   },
   {
@@ -16,7 +16,7 @@ const startups = [
     domain: 'NonTechnology',
     eirAssigned: 'Dhruv',
     stage: 'L2',
-    prioritylevel: 'S3',
+    prioritylevel: 'P3',
     isCurrent: false,
   },
   // More startups...
