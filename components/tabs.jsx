@@ -15,7 +15,7 @@ function Tabs({ id }) {
     const updateSelectedTab = (path) => {
         if (path.includes("founders")) setSelectedTab("About Founders");
         else if (path.includes("sourcing-and-evaluation")) setSelectedTab("Sourcing and Evaluation");
-        else if (path.includes("checklist")) setSelectedTab("CheckList");
+        else if (path.includes("checklist")) setSelectedTab("Checklist");
         else setSelectedTab("About Startup");
     };
 
@@ -24,7 +24,7 @@ function Tabs({ id }) {
             "About Startup": `/startups/${id}/about-startup`,
             "About Founders": `/startups/${id}/about-founders`,
             "Sourcing and Evaluation": `/startups/${id}/sourcing-and-evaluation`,
-            "CheckList": `/startups/${id}/checklist`,
+            "Checklist": `/startups/${id}/checklist`,
         };
         router.push(paths[value]);
     };
@@ -42,15 +42,15 @@ function Tabs({ id }) {
                     <option>About Startup</option>
                     <option>About Founders</option>
                     <option>Sourcing and Evaluation</option>
-                    <option>CheckList</option>
+                    <option>Checklist</option>
                 </select>
             </div>
             <ul className="hidden text-sm font-medium text-center text-gray-300 rounded-lg shadow sm:flex">
-                {["About Startup", "About Founders", "Sourcing and Evaluation", "CheckList"].map((tab) => (
+                {["About Startup", "About Founders", "Sourcing and Evaluation", "Checklist"].map((tab) => (
                     <li key={tab} className="w-full focus-within:z-10">
                         <Link href={`/startups/${id}/${tab.toLowerCase().replace(/ /g, "-")}`}>
                             <div
-                                className={`inline-block w-full p-4 ${selectedTab === tab ? "text-white bg-gray-700" : "bg-gray-900"} h-full flex justify-center items-center rounded-sm border border-gray-600 hover:text-gray-200 hover:bg-gray-600 focus:ring-4 focus:ring-blue-300 focus:outline-none`}
+                                className={`inline-block w-full p-4 ${selectedTab === tab ? "text-white bg-gray-900" : "bg-black"} h-full flex justify-center items-center border border-gray-800 hover:text-gray-200 hover:bg-gray-600 focus:ring-4 focus:ring-blue-300 focus:outline-none ${tab === "About Startup" ? "rounded-l-xl" : ""} ${tab === "Checklist" ? "rounded-r-xl" : ""}`}
                                 onClick={() => handleTabChange(tab)}
                             >
                                 {tab}
