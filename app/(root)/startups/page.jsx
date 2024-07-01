@@ -41,29 +41,36 @@ export default function StartupList() {
   const [selectedThesis, setSelectedThesis] = useState([]);
   const [selectedEirAssigned, setSelectedEirAssigned] = useState([]);
   const [selectedStage, setSelectedStage] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 10;
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
+    setCurrentPage(1); // Reset to first page when search query changes
   };
 
   const toggleFilter = (filter, setFilter, value) => {
     setFilter((prev) =>
       prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
     );
+    setCurrentPage(1); // Reset to first page when filter changes
   };
 
   const handleThesisFilterChange = (value) => {
     setSelectedThesis(value === 'all' ? [] : [value]);
+    setCurrentPage(1); // Reset to first page when filter changes
   };
 
   const handleEIRFilterChange = (value) => {
     setSelectedEirAssigned(value === 'all' ? [] : [value]);
+    setCurrentPage(1); // Reset to first page when filter changes
   };
 
   const handleStageFilterChange = (value) => {
     setSelectedStage(value === 'all' ? [] : [value]);
+    setCurrentPage(1); // Reset to first page when filter changes
   };
-
 
   const filteredStartups = startups.filter((startup) => {
     return (
@@ -73,6 +80,18 @@ export default function StartupList() {
       (selectedStage.length === 0 || selectedStage.includes(startup.stage))
     );
   });
+
+  const totalPages = Math.ceil(filteredStartups.length / itemsPerPage);
+
+  const paginatedStartups = filteredStartups.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+  const handlePreviousPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
 
   return (
     <div className="w-full text-gray-100">
@@ -130,7 +149,6 @@ export default function StartupList() {
             </SelectContent>
           </Select>
         </div>
-
       </div>
 
       <div className="-mx-4 mt-10 ring-1 ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg bg-black">
@@ -154,13 +172,11 @@ export default function StartupList() {
               </th>
               <th
                 scope="col"
-
                 className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-100 lg:table-cell"
-              >                Priority Level
+              >
+                Priority Level
               </th>
               <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-100">
-
-
                 Stage
               </th>
               <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
@@ -169,7 +185,7 @@ export default function StartupList() {
             </tr>
           </thead>
           <tbody>
-            {filteredStartups.map((startup, startupIdx) => (
+            {paginatedStartups.map((startup, startupIdx) => (
               <tr key={startup.id}>
                 <td
                   className={classNames(
@@ -241,6 +257,29 @@ export default function StartupList() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="flex items-center justify-between mt-4">
+        <div className="text-sm text-gray-300">
+          Showing {Math.min((currentPage - 1) * itemsPerPage + 1, filteredStartups.length)}-
+          {Math.min(currentPage * itemsPerPage, filteredStartups.length)} of {filteredStartups.length} startups
+        </div>
+        <div className="flex gap-2">
+          <Button
+            onClick={handlePreviousPage}
+            disabled={currentPage === 1}
+            className="border border-gray-600 bg-black px-3 py-1 text-sm font-medium leading-4 text-gray-300 shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
+          >
+            Previous
+          </Button>
+          <Button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+            className="border border-gray-600 bg-black px-3 py-1 text-sm font-medium leading-4 text-gray-300 shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   );
