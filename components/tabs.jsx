@@ -1,19 +1,23 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 function Tabs({ id }) {
     const router = useRouter();
+    const pathname = usePathname();
     const [selectedTab, setSelectedTab] = useState("About Startup");
 
     useEffect(() => {
-        const path = window.location.pathname;
+        updateSelectedTab(pathname);
+    }, [pathname]);
+
+    const updateSelectedTab = (path) => {
         if (path.includes("founders")) setSelectedTab("About Founders");
         else if (path.includes("sourcing-evaluation")) setSelectedTab("Sourcing and Evaluation");
         else if (path.includes("checklist")) setSelectedTab("CheckList");
         else setSelectedTab("About Startup");
-    }, []);
+    };
 
     const handleTabChange = (value) => {
         const paths = {
@@ -23,7 +27,6 @@ function Tabs({ id }) {
             "CheckList": `/startups/${id}/checklist`,
         };
         router.push(paths[value]);
-        setSelectedTab(value);
     };
 
     return (

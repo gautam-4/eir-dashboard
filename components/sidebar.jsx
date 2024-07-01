@@ -4,8 +4,9 @@ import logo from '@/public/assets/logo.png'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+import { usePathname } from 'next/navigation'
 import {
   Bars3Icon,
   CalendarIcon,
@@ -18,12 +19,12 @@ import {
 } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Startups', href: '/startups', icon: HomeIcon, current: true },
-  { name: 'Team', href: '/team', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '/projects', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '/calendar', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '/documents', icon: InboxIcon, current: false },
-  { name: 'Reports', href: '/reports', icon: ChartBarIcon, current: false },
+  { name: 'Startups', href: '/startups', icon: HomeIcon },
+  { name: 'Thesis', href: '/thesis', icon: UsersIcon },
+  { name: 'Projects', href: '/projects', icon: FolderIcon },
+  { name: 'Calendar', href: '/calendar', icon: CalendarIcon },
+  { name: 'Documents', href: '/documents', icon: InboxIcon },
+  { name: 'Reports', href: '/reports', icon: ChartBarIcon },
 ]
 
 function classNames(...classes) {
@@ -32,6 +33,17 @@ function classNames(...classes) {
 
 export default function Sidebar({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [currentItem, setCurrentItem] = useState('')
+  const pathname = usePathname()
+
+  useEffect(() => {
+    const currentNav = navigation.find(item => pathname.startsWith(item.href))
+    setCurrentItem(currentNav ? currentNav.name : '')
+  }, [pathname])
+
+  const handleItemClick = () => {
+    setSidebarOpen(false) // Close sidebar on item click (only for mobile view)
+  }
 
   return (
     <>
@@ -95,15 +107,16 @@ export default function Sidebar({ children }) {
                           key={item.name}
                           href={item.href}
                           className={classNames(
-                            item.current
+                            currentItem === item.name
                               ? 'bg-gray-900 text-white'
                               : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                             'group flex items-center px-2 py-2 text-base font-medium rounded-md'
                           )}
+                          onClick={() => handleItemClick()}
                         >
                           <item.icon
                             className={classNames(
-                              item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
+                              currentItem === item.name ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
                               'mr-4 flex-shrink-0 h-6 w-6'
                             )}
                             aria-hidden="true"
@@ -155,13 +168,14 @@ export default function Sidebar({ children }) {
                     key={item.name}
                     href={item.href}
                     className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      currentItem === item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                       'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                     )}
+                    onClick={() => handleItemClick()}
                   >
                     <item.icon
                       className={classNames(
-                        item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
+                        currentItem === item.name ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
                         'mr-3 flex-shrink-0 h-6 w-6'
                       )}
                       aria-hidden="true"
@@ -193,7 +207,6 @@ export default function Sidebar({ children }) {
 
         <div className="flex flex-1 flex-col md:pl-64">
           <div className="sticky top-0 z-10 bg-transparent pl-1 pt-1 sm:pl-3 sm:pt-3 md:hidden">
-
             <button
               type="button"
               className="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
@@ -202,7 +215,6 @@ export default function Sidebar({ children }) {
               <span className="sr-only">Open sidebar</span>
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
-
           </div>
           <main className="flex-1">
             <div className="py-6">
