@@ -33,6 +33,7 @@ function classNames(...classes) {
 
 export default function Sidebar({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(true)
   const [currentItem, setCurrentItem] = useState('')
   const pathname = usePathname()
 
@@ -42,7 +43,11 @@ export default function Sidebar({ children }) {
   }, [pathname])
 
   const handleItemClick = () => {
-    setSidebarOpen(false) // Close sidebar on item click (only for mobile view)
+    setSidebarOpen(false)
+  }
+
+  const toggleSidebar = () => {
+    setIsExpanded(!isExpanded)
   }
 
   return (
@@ -151,17 +156,24 @@ export default function Sidebar({ children }) {
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col border-r border-gray-700">
-          {/* Sidebar component, swap this element with another sidebar if you like */}
+        <div className={`hidden md:fixed md:inset-y-0 md:flex md:flex-col border-r border-gray-700 transition-all duration-300 ${isExpanded ? 'md:w-64' : 'md:w-16'}`}>
           <div className="flex min-h-0 flex-1 flex-col bg-black">
+            <div className="flex items-center justify-between h-16 flex-shrink-0 px-4">
+              <Image
+                className={`h-8 w-auto ${isExpanded ? '' : 'hidden'}`}
+                src={logo}
+                alt="Your Company"
+              />
+              <button
+                onClick={toggleSidebar}
+                className="p-2 rounded-md text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              >
+
+                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+
+              </button>
+            </div>
             <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
-              <div className="flex flex-shrink-0 items-center px-4">
-                <Image
-                  className="h-8 w-auto"
-                  src={logo}
-                  alt="Your Company"
-                />
-              </div>
               <nav className="mt-5 flex-1 space-y-1 px-2">
                 {navigation.map((item) => (
                   <Link
@@ -169,43 +181,46 @@ export default function Sidebar({ children }) {
                     href={item.href}
                     className={classNames(
                       currentItem === item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                      isExpanded ? '' : 'justify-center'
                     )}
                     onClick={() => handleItemClick()}
                   >
                     <item.icon
                       className={classNames(
                         currentItem === item.name ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                        'mr-3 flex-shrink-0 h-6 w-6'
+                        'flex-shrink-0 h-6 w-6'
                       )}
                       aria-hidden="true"
                     />
-                    {item.name}
+                    {isExpanded && <span className="ml-3">{item.name}</span>}
                   </Link>
                 ))}
               </nav>
             </div>
-            <div className="flex flex-shrink-0 bg-gray-900 p-4 m-2 rounded-lg">
-              <Link href="/profile" className="group block w-full flex-shrink-0">
-                <div className="flex items-center">
-                  <div>
-                    <img
-                      className="inline-block h-9 w-9 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
+            {isExpanded && (
+              <div className="flex flex-shrink-0 bg-gray-900 p-4 m-2 rounded-lg">
+                <Link href="/profile" className="group block w-full flex-shrink-0">
+                  <div className="flex items-center">
+                    <div>
+                      <img
+                        className="inline-block h-9 w-9 rounded-full"
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm font-medium text-white">Tom Cook</p>
+                      <p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">View profile</p>
+                    </div>
                   </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium text-white">Tom Cook</p>
-                    <p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">View profile</p>
-                  </div>
-                </div>
-              </Link>
-            </div>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col md:pl-64">
+        <div className={`flex flex-1 flex-col ${isExpanded ? 'md:pl-64' : 'md:pl-20'}`}>
           <div className="sticky top-0 z-10 bg-transparent pl-1 pt-1 sm:pl-3 sm:pt-3 md:hidden">
             <button
               type="button"
