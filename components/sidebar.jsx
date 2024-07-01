@@ -114,7 +114,7 @@ export default function Sidebar({ children }) {
                           className={classNames(
                             currentItem === item.name
                               ? 'bg-gray-900 text-white'
-                              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              : 'text-gray-300 hover:bg-gray-800 hover:text-white',
                             'group flex items-center px-2 py-2 text-base font-medium rounded-md'
                           )}
                           onClick={() => handleItemClick()}
@@ -166,7 +166,7 @@ export default function Sidebar({ children }) {
               />
               <button
                 onClick={toggleSidebar}
-                className="p-2 rounded-md text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                className="p-2 rounded-md text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               >
 
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -180,7 +180,7 @@ export default function Sidebar({ children }) {
                     key={item.name}
                     href={item.href}
                     className={classNames(
-                      currentItem === item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      currentItem === item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white',
                       'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
                       isExpanded ? '' : 'justify-center'
                     )}
