@@ -1,7 +1,9 @@
-function Checklist() {
+function Checklist({ params }) {
+  const id = params.id;
+
   return (
     <>
-    
+      checklist
     </>
   )
 }
