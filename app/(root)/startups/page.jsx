@@ -1,4 +1,16 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 
 const startups = [
   {
@@ -8,7 +20,6 @@ const startups = [
     eirAssigned: 'Shivani',
     prioritylevel: 'P1',
     stage: 'L1',
-    isCurrent: false,
   },
   {
     id: 2,
@@ -17,7 +28,6 @@ const startups = [
     eirAssigned: 'Dhruv',
     prioritylevel: 'P3',
     stage: 'L2',
-    isCurrent: false,
   },
   // More startups...
 ];
@@ -27,6 +37,42 @@ function classNames(...classes) {
 }
 
 export default function StartupList() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedThesis, setSelectedThesis] = useState([]);
+  const [selectedEirAssigned, setSelectedEirAssigned] = useState([]);
+  const [selectedStage, setSelectedStage] = useState([]);
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const toggleFilter = (filter, setFilter, value) => {
+    setFilter((prev) =>
+      prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
+    );
+  };
+
+  const handleThesisFilterChange = (value) => {
+    setSelectedThesis(value === 'all' ? [] : [value]);
+  };
+
+  const handleEIRFilterChange = (value) => {
+    setSelectedEirAssigned(value === 'all' ? [] : [value]);
+  };
+
+  const handleStageFilterChange = (value) => {
+    setSelectedStage(value === 'all' ? [] : [value]);
+  };
+
+
+  const filteredStartups = startups.filter((startup) => {
+    return (
+      startup.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (selectedThesis.length === 0 || selectedThesis.includes(startup.thesis)) &&
+      (selectedEirAssigned.length === 0 || selectedEirAssigned.includes(startup.eirAssigned)) &&
+      (selectedStage.length === 0 || selectedStage.includes(startup.stage))
+    );
+  });
 
   return (
     <div className="w-full text-gray-100">
@@ -35,9 +81,61 @@ export default function StartupList() {
           <h1 className="text-2xl font-semibold text-gray-100">Startups</h1>
         </div>
       </div>
-      <div className="mt-10 ring-1 ring-gray-700 md:rounded-lg bg-black">
-        <table className="min-w-full divide-y divide-gray-700">
-          <thead className="">
+
+      <div className="flex items-center justify-between mt-8 flex-wrap">
+        <div className="w-[345px] md:w-[435px] pb-2">
+          <Input
+            type="text"
+            placeholder="Search startups..."
+            value={searchQuery}
+            onChange={handleSearch}
+            className="w-full shadow-sm bg-transparent text-gray-300"
+          />
+        </div>
+
+        <div className="flex gap-2 pb-2 flex-wrap">
+          <Select onValueChange={handleThesisFilterChange} >
+            <SelectTrigger className="w-[109px] bg-transparent text-gray-400">
+              <SelectValue placeholder="All Thesis" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Thesis</SelectItem>
+              <SelectItem value="Technology">Technology</SelectItem>
+              <SelectItem value="NonTechnology">NonTechnology</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select onValueChange={handleEIRFilterChange}>
+            <SelectTrigger className="w-[109px] bg-transparent text-gray-400">
+              <SelectValue placeholder="All EIRs" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All EIRs</SelectItem>
+              <SelectItem value="Shivani">Shivani</SelectItem>
+              <SelectItem value="Dhruv">Dhruv</SelectItem>
+            </SelectContent>
+          </Select>
+
+          <Select onValueChange={handleStageFilterChange}>
+            <SelectTrigger className="w-[109px] bg-transparent text-gray-400">
+              <SelectValue placeholder="All Stages" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Stages</SelectItem>
+              <SelectItem value="L1">L1</SelectItem>
+              <SelectItem value="L2">L2</SelectItem>
+              <SelectItem value="L2.5">L2.5</SelectItem>
+              <SelectItem value="L3">L3</SelectItem>
+              <SelectItem value="L4">L4</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+      </div>
+
+      <div className="-mx-4 mt-10 ring-1 ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg bg-black">
+        <table className="min-w-full divide-y divide-gray-400">
+          <thead>
             <tr>
               <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-100 sm:pl-6">
                 Startup Name
@@ -54,14 +152,15 @@ export default function StartupList() {
               >
                 EIR Assigned
               </th>
-              
-              <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-100">
-                Priority Level
-              </th>
               <th
                 scope="col"
+
                 className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-100 lg:table-cell"
-              >
+              >                Priority Level
+              </th>
+              <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-100">
+
+
                 Stage
               </th>
               <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
@@ -70,7 +169,7 @@ export default function StartupList() {
             </tr>
           </thead>
           <tbody>
-            {startups.map((startup, startupIdx) => (
+            {filteredStartups.map((startup, startupIdx) => (
               <tr key={startup.id}>
                 <td
                   className={classNames(
@@ -80,7 +179,6 @@ export default function StartupList() {
                 >
                   <div className="font-medium text-gray-100">
                     {startup.name}
-                    {startup.isCurrent ? <span className="ml-1 text-indigo-400">(Current startup)</span> : null}
                   </div>
                   <div className="mt-1 flex flex-col text-gray-400 sm:block lg:hidden">
                     <span>
@@ -94,7 +192,7 @@ export default function StartupList() {
                 <td
                   className={classNames(
                     startupIdx === 0 ? '' : 'border-t border-gray-800',
-                    'hidden px-3 py-3.5 text-sm text-gray-400 lg:table-cell'
+                    'hidden px-3 py-3.5 text-sm text-gray-300 lg:table-cell'
                   )}
                 >
                   {startup.thesis}
@@ -102,7 +200,7 @@ export default function StartupList() {
                 <td
                   className={classNames(
                     startupIdx === 0 ? '' : 'border-t border-gray-800',
-                    'hidden px-3 py-3.5 text-sm text-gray-400 lg:table-cell'
+                    'hidden px-3 py-3.5 text-sm text-gray-300 lg:table-cell'
                   )}
                 >
                   {startup.eirAssigned}
@@ -110,7 +208,7 @@ export default function StartupList() {
                 <td
                   className={classNames(
                     startupIdx === 0 ? '' : 'border-t border-gray-800',
-                    'hidden px-3 py-3.5 text-sm text-gray-400 lg:table-cell'
+                    'hidden px-3 py-3.5 text-sm text-gray-300 lg:table-cell'
                   )}
                 >
                   {startup.prioritylevel}
@@ -118,11 +216,10 @@ export default function StartupList() {
                 <td
                   className={classNames(
                     startupIdx === 0 ? '' : 'border-t border-gray-800',
-                    'px-3 py-3.5 text-sm text-gray-400'
+                    'px-3 py-3.5 text-sm text-gray-300'
                   )}
                 >
-                  <div className="sm:hidden">{startup.stage}</div>
-                  <div className="hidden sm:block">{startup.stage}</div>
+                  {startup.stage}
                 </td>
                 <td
                   className={classNames(
@@ -130,18 +227,14 @@ export default function StartupList() {
                     'relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium'
                   )}
                 >
-                  {
-                    
-                    <Link href={`/startups/${startup.id}/about-startup`}>
-                      <button
-                        type="button"
-                        className="inline-flex items-center rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-sm font-medium leading-4 text-gray-300 shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
-                        disabled={startup.isCurrent}
-                      >
-                        Select<span className="sr-only">, {startup.name}</span>
-                      </button>
-                    </Link>
-                  }
+                  <Link href={`/startups/${startup.id}/about-startup`}>
+                    <Button
+                      type="button"
+                      className="inline-flex items-center rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-sm font-medium leading-4 text-gray-300 shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30"
+                    >
+                      Select<span className="sr-only">, {startup.name}</span>
+                    </Button>
+                  </Link>
                   {startupIdx !== 0 ? <div className="absolute right-6 left-0 -top-px h-px bg-gray-800" /> : null}
                 </td>
               </tr>
