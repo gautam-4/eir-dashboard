@@ -35,7 +35,7 @@ function Tabs({ id }) {
                 <label htmlFor="tabs" className="sr-only">Select your Tab</label>
                 <select
                     id="tabs"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     onChange={(e) => handleTabChange(e.target.value)}
                     value={selectedTab}
                 >
@@ -45,12 +45,12 @@ function Tabs({ id }) {
                     <option>CheckList</option>
                 </select>
             </div>
-            <ul className="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
+            <ul className="hidden text-sm font-medium text-center text-gray-300 rounded-lg shadow sm:flex">
                 {["About Startup", "About Founders", "Sourcing and Evaluation", "CheckList"].map((tab) => (
                     <li key={tab} className="w-full focus-within:z-10">
                         <Link href={`/startups/${id}/${tab.toLowerCase().replace(/ /g, "-")}`}>
                             <div
-                                className={`inline-block w-full p-4 ${selectedTab === tab ? "text-gray-900 bg-gray-100 dark:bg-gray-700 dark:text-white" : "bg-white dark:bg-gray-800"} border-r border-gray-200 dark:border-gray-700 hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:hover:text-white dark:hover:bg-gray-700`}
+                                className={`inline-block w-full p-4 ${selectedTab === tab ? "text-white bg-gray-700" : "bg-gray-900"} h-full flex justify-center items-center rounded-sm border border-gray-600 hover:text-gray-200 hover:bg-gray-600 focus:ring-4 focus:ring-blue-300 focus:outline-none`}
                                 onClick={() => handleTabChange(tab)}
                             >
                                 {tab}

@@ -4,19 +4,19 @@ const startups = [
   {
     id: 1,
     name: 'Company A',
-    domain: 'Technology',
+    thesis: 'Technology',
     eirAssigned: 'Shivani',
-    stage: 'L1',
     prioritylevel: 'P1',
+    stage: 'L1',
     isCurrent: false,
   },
   {
     id: 2,
     name: 'Company B',
-    domain: 'NonTechnology',
+    thesis: 'NonTechnology',
     eirAssigned: 'Dhruv',
-    stage: 'L2',
     prioritylevel: 'P3',
+    stage: 'L2',
     isCurrent: false,
   },
   // More startups...
@@ -46,7 +46,7 @@ export default function StartupList() {
                 scope="col"
                 className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-100 lg:table-cell"
               >
-                Domain
+                Thesis
               </th>
               <th
                 scope="col"
@@ -54,14 +54,15 @@ export default function StartupList() {
               >
                 EIR Assigned
               </th>
+              
+              <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-100">
+                Priority Level
+              </th>
               <th
                 scope="col"
                 className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-100 lg:table-cell"
               >
                 Stage
-              </th>
-              <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-100">
-                Priority Level
               </th>
               <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
                 <span className="sr-only">Select</span>
@@ -83,10 +84,10 @@ export default function StartupList() {
                   </div>
                   <div className="mt-1 flex flex-col text-gray-400 sm:block lg:hidden">
                     <span>
-                      {startup.domain} / {startup.eirAssigned}
+                      {startup.thesis} / {startup.eirAssigned}
                     </span>
                     <span className="hidden sm:inline">·</span>
-                    <span>{startup.stage}</span>
+                    <span>{startup.prioritylevel}</span>
                   </div>
                   {startupIdx !== 0 ? <div className="absolute right-0 left-6 -top-px h-px bg-gray-800" /> : null}
                 </td>
@@ -96,7 +97,7 @@ export default function StartupList() {
                     'hidden px-3 py-3.5 text-sm text-gray-400 lg:table-cell'
                   )}
                 >
-                  {startup.domain}
+                  {startup.thesis}
                 </td>
                 <td
                   className={classNames(
@@ -112,7 +113,7 @@ export default function StartupList() {
                     'hidden px-3 py-3.5 text-sm text-gray-400 lg:table-cell'
                   )}
                 >
-                  {startup.stage}
+                  {startup.prioritylevel}
                 </td>
                 <td
                   className={classNames(
@@ -120,8 +121,8 @@ export default function StartupList() {
                     'px-3 py-3.5 text-sm text-gray-400'
                   )}
                 >
-                  <div className="sm:hidden">{startup.prioritylevel}/mo</div>
-                  <div className="hidden sm:block">{startup.prioritylevel}</div>
+                  <div className="sm:hidden">{startup.stage}</div>
+                  <div className="hidden sm:block">{startup.stage}</div>
                 </td>
                 <td
                   className={classNames(
