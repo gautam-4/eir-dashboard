@@ -50,7 +50,7 @@ function Tabs({ id }) {
                     <li key={tab} className="w-full focus-within:z-10">
                         <Link href={`/startups/${id}/${tab.toLowerCase().replace(/ /g, "-")}`}>
                             <div
-                                className={`inline-block w-full p-4 ${selectedTab === tab ? "text-white bg-gray-900" : "bg-black"} h-full flex justify-center items-center border border-gray-800 hover:text-gray-200 hover:bg-gray-600 focus:ring-4 focus:ring-blue-300 focus:outline-none ${tab === "About Startup" ? "rounded-l-xl" : ""} ${tab === "Checklist" ? "rounded-r-xl" : ""}`}
+                                className={`inline-block w-full p-4 ${selectedTab === tab ? "text-white bg-gray-900" : "bg-black"} h-full flex justify-center items-center border border-gray-800 hover:text-gray-200 hover:bg-gray-800 focus:ring-4 focus:ring-blue-300 focus:outline-none ${tab === "About Startup" ? "rounded-l-xl" : ""} ${tab === "Checklist" ? "rounded-r-xl" : ""}`}
                                 onClick={() => handleTabChange(tab)}
                             >
                                 {tab}
