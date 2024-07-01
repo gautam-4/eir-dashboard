@@ -1,7 +1,7 @@
 function Page() {
   return (
     <>
-        Hello ALL!!!
+        Dashboard home
     </>
   )
 }

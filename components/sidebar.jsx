@@ -100,11 +100,13 @@ export default function Sidebar({ children }) {
                   </Transition.Child>
                   <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
                     <div className="flex flex-shrink-0 items-center px-4">
-                      <Image
-                        className="h-8 w-auto"
-                        src={logo}
-                        alt="Your Company"
-                      />
+                      <Link href={'/'}>
+                        <Image
+                          className="h-8 w-auto"
+                          src={logo}
+                          alt="Your Company"
+                        />
+                      </Link>
                     </div>
                     <nav className="mt-5 space-y-1 px-2">
                       {navigation.map((item) => (
@@ -159,11 +161,13 @@ export default function Sidebar({ children }) {
         <div className={`hidden md:fixed md:inset-y-0 md:flex md:flex-col border-r border-gray-700 transition-all duration-300 ${isExpanded ? 'md:w-64' : 'md:w-16'}`}>
           <div className="flex min-h-0 flex-1 flex-col bg-black">
             <div className="flex items-center justify-between h-16 flex-shrink-0 px-4">
+              <Link href={'/'}>
               <Image
                 className={`h-8 w-auto ${isExpanded ? '' : 'hidden'}`}
                 src={logo}
                 alt="Your Company"
               />
+              </Link>
               <button
                 onClick={toggleSidebar}
                 className="p-2 rounded-md text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
