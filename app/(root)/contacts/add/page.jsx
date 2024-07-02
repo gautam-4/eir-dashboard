@@ -6,22 +6,26 @@ import { Button } from "@/components/ui/button";
 
 import { useState } from "react";
 import Dropdown from "@/components/dropdown";
-import { PlusIcon } from '@heroicons/react/24/outline';
+import { PlusIcon, XCircleIcon } from '@heroicons/react/24/outline';
 
 const designations = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: "founder",
+    label: "Founder",
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
+    value: "mentor",
+    label: "Mentor",
+  },
+  {
+    value: "investor",
+    label: "Investor",
   },
   {
     value: "other",
     label: "Other",
   },
-]
+];
 
 function AddContact() {
   const [formData, setFormData] = useState({
@@ -31,35 +35,52 @@ function AddContact() {
     phone: '',
     whatsappNo: '',
     linkedin: '',
-    associations: {
-      type: '',
-      company: ''
-    }
+    associations: []
+  });
+
+  const [association, setAssociation] = useState({
+    type: '',
+    company: ''
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => {
-      // Handle nested associations separately
-      if (name.startsWith('associations.')) {
-        const associationKey = name.split('.')[1];
-        return {
-          ...prevState,
-          associations: {
-            ...prevState.associations,
-            [associationKey]: value
-          }
-        };
-      }
-      return {
-        ...prevState,
-        [name]: value
-      };
-    });
-  }
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
   const handleDropdownChange = (name, value) => {
-    setFormData((prevState) => ({ ...prevState, [name]: value }));
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+  };
+
+  const handleAssociationChange = (e) => {
+    const { name, value } = e.target;
+    setAssociation(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const addAssociation = () => {
+    if (association.type.trim() && association.company.trim()) {
+      setFormData(prevState => ({
+        ...prevState,
+        associations: [...prevState.associations, association]
+      }));
+      setAssociation(prevState => ({
+        type: prevState.type,
+        company: ''
+      }));
+    }
+  };
+
+  const removeAssociation = (index) => {
+    setFormData(prevState => ({
+      ...prevState,
+      associations: prevState.associations.filter((_, i) => i !== index)
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -73,14 +94,9 @@ function AddContact() {
       phone: '',
       whatsappNo: '',
       linkedin: '',
-      associations: [
-        {
-          type: '',
-          company: ''
-        }
-      ]
+      associations: []
     });
-  }
+  };
 
   return (
     <div className="w-full text-gray-100">
@@ -121,27 +137,31 @@ function AddContact() {
               <p className="mt-5 font-bold text-xl">Associations</p>
 
               <div>
-
+                {formData.associations.map((assoc, index) => (
+                  <div key={index} className="flex gap-2 mb-2 items-center">
+                    <span>{assoc.type}</span> - 
+                    <span>{assoc.company}</span>
+                    <button onClick={() => removeAssociation(index)} type="button" className="ml-2 text-red-600 hover:text-red-800">
+                      <XCircleIcon className="h-5 w-5" aria-hidden="true" />
+                    </button>
+                  </div>
+                ))}
               </div>
 
               <div className="flex w-full max-w-sm items-center gap-1.5 py-5">
                 <div>
-                  <Label htmlFor="associations.type">Association Type</Label>
-                  <Dropdown params={designations} label="Select Association Type" name="associations.type" handleDropdownChange={handleDropdownChange} />
+                  <Label htmlFor="type">Association Type</Label>
+                  <Dropdown params={designations} label="Association Type" name="type" handleDropdownChange={(name, value) => handleAssociationChange({ target: { name, value } })} />
                 </div>
                 <div>
-                  <Label htmlFor="associations.company">Company</Label>
-                  <Input type="text" id="associations.company" placeholder="Association Company" name="associations.company" onChange={handleChange} value={formData.associations.company} required className="bg-transparent" />
+                  <Label htmlFor="company">Company</Label>
+                  <Input type="text" id="company" placeholder="Association Company" name="company" onChange={handleAssociationChange} value={association.company} className="bg-transparent" />
                 </div>
-                <Button className="bg-green-800 hover:bg-green-950 bg-opacity-85 rounded-full mt-6">
+                <Button onClick={addAssociation} className="bg-transparent border border-white bg-opacity-85 rounded-full mt-6" type="button">
                   <PlusIcon className="h-4 w-4" aria-hidden="true" />
                 </Button>
               </div>
-
-              
             </div>
-
-
 
             <div className="text-left mt-3">
               <Button type="submit"
@@ -154,7 +174,7 @@ function AddContact() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default AddContact;
