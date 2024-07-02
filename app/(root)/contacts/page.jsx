@@ -11,29 +11,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import {
-  PlusIcon
-} from '@heroicons/react/24/outline'
+import { PlusIcon } from '@heroicons/react/24/outline';
 
 const contacts = [
-    {
-      id: 1,
-      name: 'Contact A',
-      designation: 'CEO',
-      organization: 'Company X',
-      roles: ['Founder', 'Mentor', 'Investor'],
-      stage: 'L1',
-    },
-    {
-      id: 2,
-      name: 'Contact B',
-      designation: 'CTO',
-      organization: 'Startup Y',
-      roles: ['Founder', 'Investor'],
-      stage: 'L2',
-    },
-  ];
-  
+  {
+    id: 1,
+    name: 'Contact A',
+    designation: 'CEO',
+    organization: 'Company X',
+    roles: ['Founder', 'Mentor', 'Investor'],
+  },
+  {
+    id: 2,
+    name: 'Contact B',
+    designation: 'CTO',
+    organization: 'Startup Y',
+    roles: ['Founder', 'Investor'],
+  },
+];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -41,7 +36,7 @@ function classNames(...classes) {
 
 export default function ContactList() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedRoles, setSelectedRoles] = useState([]);
+  const [selectedRole, setSelectedRole] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 10;
@@ -52,14 +47,17 @@ export default function ContactList() {
   };
 
   const handleRoleFilterChange = (value) => {
-    setSelectedRoles(value === 'all' ? [] : [value]);
+    setSelectedRole(value === 'all' ? '' : value);
     setCurrentPage(1); // Reset to first page when filter changes
   };
+
+  // Extract unique roles
+  const uniqueRoles = Array.from(new Set(contacts.flatMap(contact => contact.roles)));
 
   const filteredContacts = contacts.filter((contact) => {
     return (
       contact.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      (selectedRoles.length === 0 || selectedRoles.includes(contact.roles))
+      (selectedRole === '' || contact.roles.includes(selectedRole))
     );
   });
 
@@ -95,16 +93,15 @@ export default function ContactList() {
         </div>
 
         <div className="flex gap-2 pb-2 flex-wrap">
-
           <Select onValueChange={handleRoleFilterChange}>
             <SelectTrigger className="w-[82px] bg-transparent text-gray-400">
               <SelectValue placeholder="Roles" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Roles</SelectItem>
-              <SelectItem value="L1">Founder</SelectItem>
-              <SelectItem value="L2">Mentor</SelectItem>
-              <SelectItem value="L2.5">Investor</SelectItem>
+              {uniqueRoles.map((role, index) => (
+                <SelectItem key={index} value={role}>{role}</SelectItem>
+              ))}
             </SelectContent>
           </Select>
 
@@ -114,7 +111,6 @@ export default function ContactList() {
               <span className="pl-2">Add</span>
             </Button>
           </Link>
-
         </div>
       </div>
 
@@ -166,7 +162,7 @@ export default function ContactList() {
                       {contact.designation} / {contact.organization}
                     </span>
                     <span className="hidden sm:inline">·</span>
-                    <span>{contact.roles}</span>
+                    <span>{contact.roles.join(', ')}</span>
                   </div>
                   {contactIdx !== 0 ? <div className="absolute right-0 left-6 -top-px h-px bg-gray-800" /> : null}
                 </td>
