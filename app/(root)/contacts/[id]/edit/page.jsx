@@ -31,11 +31,12 @@ const designations = [
 
 function EditContact({ params }) {
     const id = params.id;
-
+    
     const [formData, setFormData] = useState({
         name: '',
         designation: '',
         organization: '',
+        email: '',
         phone: '',
         whatsappNo: '',
         linkedin: '',
@@ -95,6 +96,7 @@ function EditContact({ params }) {
             name: '',
             designation: '',
             organization: '',
+            email: '',
             phone: '',
             whatsappNo: '',
             linkedin: '',
@@ -126,6 +128,10 @@ function EditContact({ params }) {
                         <div className="grid w-full max-w-sm items-center gap-1.5 py-5">
                             <Label htmlFor="organization">Organization</Label>
                             <Input type="text" id="organization" placeholder="Organization" name="organization" onChange={handleChange} value={formData.organization} required className="bg-transparent" />
+                        </div>
+                        <div className="grid w-full max-w-sm items-center gap-1.5 py-5">
+                            <Label htmlFor="email">Email</Label>
+                            <Input type="email" id="email" placeholder="Email" name="email" onChange={handleChange} value={formData.email} required className="bg-transparent" />
                         </div>
                         <div className="grid w-full max-w-sm items-center gap-1.5 py-5">
                             <Label htmlFor="phone">Phone No.</Label>

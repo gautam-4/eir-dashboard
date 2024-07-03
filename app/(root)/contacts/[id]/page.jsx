@@ -28,6 +28,10 @@ function ContactView({ params }) {
                     </div>
                 </div>
 
+                <div className="mt-2">
+                    <span className="text-gray-200">example@example.comaaaaa</span>
+                </div>
+
                 <div className="mt-8 mb-2 text-gray-200">
                 <div>
                     <p>Designation: CTO</p>

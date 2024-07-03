@@ -34,6 +34,7 @@ function AddContact() {
     name: '',
     designation: '',
     organization: '',
+    email: '',
     phone: '',
     whatsappNo: '',
     linkedin: '',
@@ -93,6 +94,7 @@ function AddContact() {
       name: '',
       designation: '',
       organization: '',
+      email: '',
       phone: '',
       whatsappNo: '',
       linkedin: '',
@@ -111,7 +113,7 @@ function AddContact() {
         <div className="pb-2">
           <form className="px-8 pt-6 pb-8 lg:rounded-r-lg lg:rounded-l-none rounded-3xl" onSubmit={handleSubmit}>
 
-            <UploadPhoto/>
+            <UploadPhoto />
 
             <div className="grid w-full max-w-sm items-center gap-1.5 py-5">
               <Label htmlFor="name">Name</Label>
@@ -124,6 +126,10 @@ function AddContact() {
             <div className="grid w-full max-w-sm items-center gap-1.5 py-5">
               <Label htmlFor="organization">Organization</Label>
               <Input type="text" id="organization" placeholder="Organization" name="organization" onChange={handleChange} value={formData.organization} required className="bg-transparent" />
+            </div>
+            <div className="grid w-full max-w-sm items-center gap-1.5 py-5">
+              <Label htmlFor="email">Email</Label>
+              <Input type="email" id="email" placeholder="Email" name="email" onChange={handleChange} value={formData.email} required className="bg-transparent" />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5 py-5">
               <Label htmlFor="phone">Phone No.</Label>
@@ -144,7 +150,7 @@ function AddContact() {
               <div>
                 {formData.associations.map((assoc, index) => (
                   <div key={index} className="flex gap-2 mb-2 items-center">
-                    <span>{assoc.type}</span> - 
+                    <span>{assoc.type}</span> -
                     <span>{assoc.company}</span>
                     <button onClick={() => removeAssociation(index)} type="button" className="ml-2 text-red-600 hover:text-red-800">
                       <XCircleIcon className="h-5 w-5" aria-hidden="true" />
