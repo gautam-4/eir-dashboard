@@ -1,9 +1,7 @@
+import { redirect } from 'next/navigation';
+
 function Page() {
-  return (
-    <>
-        Dashboard home
-    </>
-  )
+  redirect('/startups');
 }
 
 export default Page
