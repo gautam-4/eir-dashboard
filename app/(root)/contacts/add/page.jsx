@@ -8,6 +8,8 @@ import { useState } from "react";
 import Dropdown from "@/components/dropdown";
 import { PlusIcon, XCircleIcon } from '@heroicons/react/24/outline';
 
+import UploadPhoto from "@/components/uploadPhoto";
+
 const designations = [
   {
     value: "founder",
@@ -105,9 +107,12 @@ function AddContact() {
           <h1 className="text-3xl font-semibold text-gray-100">New Contact</h1>
         </div>
       </div>
-      <div className="">
+      <div>
         <div className="pb-2">
           <form className="px-8 pt-6 pb-8 lg:rounded-r-lg lg:rounded-l-none rounded-3xl" onSubmit={handleSubmit}>
+
+            <UploadPhoto/>
+
             <div className="grid w-full max-w-sm items-center gap-1.5 py-5">
               <Label htmlFor="name">Name</Label>
               <Input type="text" id="name" placeholder="Name" name="name" onChange={handleChange} value={formData.name} required className="bg-transparent" />
