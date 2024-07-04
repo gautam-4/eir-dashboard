@@ -1,3 +1,7 @@
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
+
 function Page() {
     return (
         <>
@@ -5,132 +9,144 @@ function Page() {
             <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-2">Startup Information</h3>
                 <div className="mb-4">
-                    <label htmlFor="startupName" className="block text-sm font-medium mb-1">Startup Name:</label>
-                    <input type="text" id="startupName" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label htmlFor="startupName">Startup Name</Label>
+                    <Input type="text" id="startupName" className="bg-black"/>
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="brief" className="block text-sm font-medium mb-1">Brief of Startup:</label>
-                    <textarea id="brief" rows="4" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                    <Label htmlFor="brief">Brief</Label>
+                    <Textarea id="brief" rows="4" className="bg-black resize-none"></Textarea>
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="domain" className="block text-sm font-medium mb-1">Domain of Startup:</label>
-                    <input type="text" id="domain" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label htmlFor="domain">Thesis</Label>
+                    <Input type="text" id="domain" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="leadMentor" className="block text-sm font-medium mb-1">Lead Mentor:</label>
-                    <input type="text" id="leadMentor" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label htmlFor="leadMentor">Lead Mentor</Label>
+                    <Input type="text" id="leadMentor" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="usp" className="block text-sm font-medium mb-1">USP / Core Competence:</label>
-                    <textarea id="usp" rows="4" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                    <Label htmlFor="usp">USP / Core Competence</Label>
+                    <Textarea id="usp" rows="4" className="bg-black resize-none"></Textarea>
+                </div>
+                <div className="mb-4">
+                    <Label htmlFor="businessModel">Business Model</Label>
+                    <Textarea id="businessModel" rows="4" className="bg-black resize-none"></Textarea>
                 </div>
             </div>
 
             <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-2">About the Company</h3>
                 <div className="mb-4">
-                    <label htmlFor="founded" className="block text-sm font-medium mb-1">Founded in:</label>
-                    <input type="text" id="founded" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label htmlFor="founded">Founded in</Label>
+                    <Input type="text" id="founded" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="registeredName" className="block text-sm font-medium mb-1">Registered Name:</label>
-                    <input type="text" id="registeredName" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label htmlFor="registeredName">Registered Name</Label>
+                    <Input type="text" id="registeredName" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="city" className="block text-sm font-medium mb-1">City / HQ:</label>
-                    <input type="text" id="city" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label htmlFor="city">City / HQ</Label>
+                    <Input type="text" id="city" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="website" className="block text-sm font-medium mb-1">Website:</label>
-                    <input type="text" id="website" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label htmlFor="website">Website:</Label>
+                    <Input type="text" id="website" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="email" className="block text-sm font-medium mb-1">Email of Company:</label>
-                    <input type="email" id="email" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label htmlFor="email">Email of Company</Label>
+                    <Input type="email" id="email" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="contactNo" className="block text-sm font-medium mb-1">Contact No:</label>
-                    <input type="tel" id="contactNo" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label htmlFor="contactNo">Contact No</Label>
+                    <Input type="tel" id="contactNo" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="gtmStrategy" className="block text-sm font-medium mb-1">GTM Strategy Employed:</label>
-                    <textarea id="gtmStrategy" rows="4" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                    <Label htmlFor="gtmStrategy">GTM Strategy Employed</Label>
+                    <Textarea id="gtmStrategy" rows="4" className="bg-black resize-none"></Textarea>
                 </div>
             </div>
 
             <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-2">Financial Details</h3>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Current Traction:</label>
-                    <input type="text" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label>Current Traction</Label>
+                    <Input type="text" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Revenues (MRR, ARR):</label>
-                    <input type="text" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label>Revenues (MRR, ARR)</Label>
+                    <Input type="text" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Last FY Gross Revenue:</label>
-                    <input type="text" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label>Last FY Gross Revenue</Label>
+                    <Input type="text" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Gross/Net Margin:</label>
-                    <input type="text" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label>Gross/Net Margin</Label>
+                    <Input type="text" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Monthly Burn Rate:</label>
-                    <input type="text" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label>Monthly Burn Rate</Label>
+                    <Input type="text" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Team Size:</label>
-                    <input type="text" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label>Team Size</Label>
+                    <Input type="text" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Past Investment Rounds:</label>
-                    <textarea rows="4" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                    <Label>Past Investment Rounds</Label>
+                    <Textarea rows="4" className="bg-black resize-none"></Textarea>
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Runway Before the Next Fundraise:</label>
-                    <input type="text" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label>Runway Before the Next Fundraise</Label>
+                    <Input type="text" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Key Competitors:</label>
-                    <textarea rows="4" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                    <Label>Key Competitors</Label>
+                    <Textarea rows="4" className="bg-black resize-none"></Textarea>
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Challenges or Risks:</label>
-                    <textarea rows="4" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                    <Label>Challenges or Risks</Label>
+                    <Textarea rows="4" className="bg-black resize-none"></Textarea>
                 </div>
             </div>
 
             <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-2">Investment Ask</h3>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Equity Dilution:</label>
-                    <input type="text" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label>Ask</Label>
+                    <Input type="text" className="bg-black" />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Premoney Valuation:</label>
-                    <input type="text" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
+                    <Label>Equity Dilution</Label>
+                    <Input type="text" className="bg-black" />
+                </div>
+                <div className="mb-4">
+                    <Label>Equity Dilution</Label>
+                    <Input type="text" className="bg-black" />
+                </div>
+                <div className="mb-4">
+                    <Label>Premoney Valuation</Label>
+                    <Input type="text" className="bg-black" />
                 </div>
             </div>
 
             <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-2">Additional Information</h3>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Additional Info:</label>
-                    <textarea rows="4" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                    <Label>Additional Info:</Label>
+                    <Textarea rows="4" className="bg-black resize-none"></Textarea>
                 </div>
             </div>
 
             <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-2">Note on Startup</h3>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium mb-1">Note / Comments:</label>
-                    <textarea rows="4" className="w-full px-3 py-2 border border-gray-800 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                    <Label>Note / Comments:</Label>
+                    <Textarea rows="4" className="bg-black resize-none"></Textarea>
                 </div>
             </div>
         </>
     )
 }
 
-export default Page
+export default Page;
