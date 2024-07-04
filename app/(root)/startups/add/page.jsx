@@ -64,7 +64,7 @@ function Page() {
                 <div className="space-y-8 border-b">
                     <h3 className="text-lg font-semibold mb-4">About the Company</h3>
                     <div className="space-y-6">
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
                             <div className="flex-1">
                                 <Label htmlFor="founded">Founded in</Label>
                                 <Input type="text" id="founded" className="bg-black mt-2" value={companyInfo.founded} onChange={(e) => handleChange(e, setCompanyInfo)} />
@@ -78,7 +78,7 @@ function Page() {
                                 <Input type="text" id="city" className="bg-black mt-2" value={companyInfo.city} onChange={(e) => handleChange(e, setCompanyInfo)} />
                             </div>
                         </div>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
                             <div className="flex-1">
                                 <Label htmlFor="website">Website:</Label>
                                 <Input type="text" id="website" className="bg-black mt-2" value={companyInfo.website} onChange={(e) => handleChange(e, setCompanyInfo)} />
@@ -104,7 +104,7 @@ function Page() {
                 <div className="space-y-8">
                     <h3 className="text-lg font-semibold mb-4">Financial Details</h3>
                     <div className="space-y-6">
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
                             <div className="flex-1">
                                 <Label htmlFor="currentTraction">Current Traction</Label>
                                 <Input type="text" id="currentTraction" className="bg-black mt-2" value={financialDetails.currentTraction} onChange={(e) => handleChange(e, setFinancialDetails)} />
@@ -118,7 +118,7 @@ function Page() {
                                 <Input type="text" id="lastFYRevenue" className="bg-black mt-2" value={financialDetails.lastFYRevenue} onChange={(e) => handleChange(e, setFinancialDetails)} />
                             </div>
                         </div>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
                             <div className="flex-1">
                                 <Label htmlFor="margin">Gross/Net Margin</Label>
                                 <Input type="text" id="margin" className="bg-black mt-2" value={financialDetails.margin} onChange={(e) => handleChange(e, setFinancialDetails)} />
@@ -132,7 +132,7 @@ function Page() {
                                 <Input type="text" id="teamSize" className="bg-black mt-2" value={financialDetails.teamSize} onChange={(e) => handleChange(e, setFinancialDetails)} />
                             </div>
                         </div>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
                             <div className="flex-1">
                                 <Label htmlFor="pastInvestments">Past Investment Rounds</Label>
                                 <Textarea id="pastInvestments" rows="4" className="bg-black mt-2 resize-none" value={financialDetails.pastInvestments} onChange={(e) => handleChange(e, setFinancialDetails)}></Textarea>
@@ -142,7 +142,7 @@ function Page() {
                                 <Input type="text" id="runway" className="bg-black mt-2" value={financialDetails.runway} onChange={(e) => handleChange(e, setFinancialDetails)} />
                             </div>
                         </div>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
                             <div className="flex-1">
                                 <Label htmlFor="competitors">Key Competitors</Label>
                                 <Textarea id="competitors" rows="4" className="bg-black mt-2 resize-none" value={financialDetails.competitors} onChange={(e) => handleChange(e, setFinancialDetails)}></Textarea>
@@ -160,7 +160,7 @@ function Page() {
                 <div className="space-y-8">
                     <h3 className="text-lg font-semibold mb-4">Investment Ask</h3>
                     <div className="space-y-6">
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
                             <div className="flex-1">
                                 <Label htmlFor="ask">Ask</Label>
                                 <Input type="text" id="ask" className="bg-black mt-2" value={investmentAsk.ask} onChange={(e) => handleChange(e, setInvestmentAsk)} />
