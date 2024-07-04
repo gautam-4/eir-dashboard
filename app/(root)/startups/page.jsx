@@ -155,7 +155,7 @@ export default function StartupList() {
             </SelectContent>
           </Select>
 
-          <Link href={'startups/add'}>
+          <Link href={'startups/add/summary'}>
             <Button className="bg-green-800 hover:bg-green-950 bg-opacity-85 py-4 pr-3 pl-2">
               <PlusIcon className="h-4 w-4" aria-hidden="true" />
               <span className="pl-2">Add</span>

@@ -1,5 +1,7 @@
 "use client"
 
+import FormTabs from '@/components/formTabs';
+
 import { useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -25,8 +27,7 @@ function Page() {
 
     return (
         <>
-            <h2 className="text-2xl font-semibold mb-8">New Startup</h2>
-            <form onSubmit={handleSubmit} className="space-y-12">
+            <form onSubmit={handleSubmit} className="space-y-12 mt-3">
                 <div className="space-y-8 border-b">
                     <h3 className="text-lg font-semibold mb-4">Startup Information</h3>
                     <div className="space-y-6">

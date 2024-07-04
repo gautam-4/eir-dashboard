@@ -13,7 +13,7 @@ function Tabs({ id }) {
     }, [pathname]);
 
     const updateSelectedTab = (path) => {
-        if (path.includes("founders")) setSelectedTab("About Founders");
+        if (path.includes("about-founders")) setSelectedTab("About Founders");
         else if (path.includes("sourcing-and-evaluation")) setSelectedTab("Sourcing and Evaluation");
         else if (path.includes("checklist")) setSelectedTab("Checklist");
         else setSelectedTab("About Startup");
