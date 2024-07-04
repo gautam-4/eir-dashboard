@@ -14,7 +14,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function FormTabs({ id }) {
+export default function FormTabs() {
     const router = useRouter();
     const pathname = usePathname();
     const [selectedTab, setSelectedTab] = useState("Summary");
@@ -67,7 +67,7 @@ export default function FormTabs({ id }) {
                                 className={classNames(
                                     selectedTab === tab.name
                                         ? 'border-blue-500 text-blue-700'
-                                        : 'border-transparent text-gray-400 hover:text-gray-700 hover:border-gray-300',
+                                        : 'border-transparent text-gray-300 hover:text-gray-400 hover:border-gray-300',
                                     'whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer'
                                 )}
                                 aria-current={selectedTab === tab.name ? 'page' : undefined}

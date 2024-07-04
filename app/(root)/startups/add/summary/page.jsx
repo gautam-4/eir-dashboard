@@ -1,7 +1,5 @@
 "use client"
 
-import FormTabs from '@/components/formTabs';
-
 import { useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -128,15 +126,12 @@ function Page() {
                                 <Label htmlFor="burnRate">Monthly Burn Rate</Label>
                                 <Input type="text" id="burnRate" className="bg-black mt-2" value={financialDetails.burnRate} onChange={(e) => handleChange(e, setFinancialDetails)} />
                             </div>
-                            <div className="flex-1">
-                                <Label htmlFor="teamSize">Team Size</Label>
-                                <Input type="text" id="teamSize" className="bg-black mt-2" value={financialDetails.teamSize} onChange={(e) => handleChange(e, setFinancialDetails)} />
-                            </div>
+                            
                         </div>
                         <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
-                            <div className="flex-1">
-                                <Label htmlFor="pastInvestments">Past Investment Rounds</Label>
-                                <Textarea id="pastInvestments" rows="4" className="bg-black mt-2 resize-none" value={financialDetails.pastInvestments} onChange={(e) => handleChange(e, setFinancialDetails)}></Textarea>
+                        <div className="flex-1">
+                                <Label htmlFor="teamSize">Team Size</Label>
+                                <Input type="text" id="teamSize" className="bg-black mt-2" value={financialDetails.teamSize} onChange={(e) => handleChange(e, setFinancialDetails)} />
                             </div>
                             <div className="flex-1">
                                 <Label htmlFor="runway">Runway Before the Next Fundraise</Label>
@@ -145,9 +140,16 @@ function Page() {
                         </div>
                         <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
                             <div className="flex-1">
+                                <Label htmlFor="pastInvestments">Past Investment Rounds</Label>
+                                <Textarea id="pastInvestments" rows="4" className="bg-black mt-2 resize-none" value={financialDetails.pastInvestments} onChange={(e) => handleChange(e, setFinancialDetails)}></Textarea>
+                            </div>
+                            <div className="flex-1">
                                 <Label htmlFor="competitors">Key Competitors</Label>
                                 <Textarea id="competitors" rows="4" className="bg-black mt-2 resize-none" value={financialDetails.competitors} onChange={(e) => handleChange(e, setFinancialDetails)}></Textarea>
-                            </div>
+                            </div>                            
+                        </div>
+                        <div className="flex flex-wrap gap-4 flex-col sm:flex-row">
+                            
                             <div className="flex-1">
                                 <Label htmlFor="challenges">Challenges or Risks</Label>
                                 <Textarea id="challenges" rows="4" className="bg-black mt-2 resize-none" value={financialDetails.challenges} onChange={(e) => handleChange(e, setFinancialDetails)}></Textarea>
@@ -200,7 +202,7 @@ function Page() {
                     </div>
                 </div>
 
-                <Button type="submit" className="mt-8">Submit</Button>
+                <Button type="submit" className="mt-8 button-primary hover:bg-blue-600">Submit</Button>
             </form>
         </>
     )
