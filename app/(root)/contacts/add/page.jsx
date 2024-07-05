@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 import { useState } from "react";
 import Dropdown from "@/components/dropdown";
-import { PlusIcon, XCircleIcon } from '@heroicons/react/24/outline';
+import { PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import UploadPhoto from "@/components/uploadPhoto";
 
@@ -153,7 +153,7 @@ function AddContact() {
                     <span>{assoc.type}</span> -
                     <span>{assoc.company}</span>
                     <button onClick={() => removeAssociation(index)} type="button" className="ml-2 text-red-600 hover:text-red-800">
-                      <XCircleIcon className="h-5 w-5" aria-hidden="true" />
+                      <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                     </button>
                   </div>
                 ))}

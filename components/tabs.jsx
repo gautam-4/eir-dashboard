@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
+import { Button } from "./ui/button";
 
 function Tabs({ id }) {
     const router = useRouter();
@@ -59,6 +60,14 @@ function Tabs({ id }) {
                     </li>
                 ))}
             </ul>
+
+            <div className="mt-4 flex flex-row justify-end">
+                <Link href={`/startups/edit/${id}/summary`}>
+                    <Button className="dark opacity-85">Edit</Button>
+                </Link>
+
+                <Button className="bg-red-600 hover:bg-red-800 opacity-85 ml-2">Delete</Button>
+            </div>
         </>
     );
 }

@@ -2,9 +2,9 @@ function sourcingAndEvaluation({ params }) {
   const id = params.id;
 
   return (
-    <div className="bg-transparent text-white py-6 pl-4 rounded-lg shadow-md w-full mx-auto mt-8">
-        sourcing and eval
-    </div>
+    <div className="bg-transparent text-white pl-4 rounded-lg shadow-md w-full mx-auto">
+            <h2 className="text-2xl font-semibold mb-4">Sourcing and Evaluation</h2>
+            </div>
   )
 }
 

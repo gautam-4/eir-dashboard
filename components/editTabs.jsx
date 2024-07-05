@@ -3,16 +3,13 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
-const tabs = [
-    { name: 'Summary', href: '/startups/add/summary' },
-    { name: 'Additional Info', href: '/startups/add/additional-info' },
-];
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function FormTabs() {
+export default function FormTabs({ id }) {
     const router = useRouter();
     const pathname = usePathname();
     const [selectedTab, setSelectedTab] = useState("Summary");
@@ -26,11 +23,16 @@ export default function FormTabs() {
         else setSelectedTab("Summary");
     };
 
+    const tabs = [
+        { name: 'Summary', href: `/startups/edit/${id}/summary` },
+        { name: 'Additional Info', href: `/startups/edit/${id}/additional-info` },
+    ];
+
     const handleTabChange = (value) => {
         setSelectedTab(value);
         const paths = {
-            "Summary": `/startups/add/summary`,
-            "Additional Info": `/startups/add/additional-info`,
+            "Summary": `/startups/edit/${id}/summary`,
+            "Additional Info": `/startups/edit/${id}/additional-info`,
         };
         router.push(paths[value]);
     };
