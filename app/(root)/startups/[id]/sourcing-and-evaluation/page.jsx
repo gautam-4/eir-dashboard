@@ -23,8 +23,7 @@ function sourcingAndEvaluation({ params }) {
 
 
   return (
-    <div className="bg-transparent text-white pl-4 rounded-lg shadow-md w-full mx-auto">
-      <h2 className="text-2xl font-semibold mb-4">Sourcing and Evaluation</h2>
+    <div className="bg-transparent text-white pl-4 rounded-lg shadow-md w-full mx-auto mt-12">
       <div className="flex justify-between">
         <div className="flex gap-2">
           <select
